@@ -1,7 +1,5 @@
-import sys
 from PyQt5.QtCore import QLine
 
-from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.QtWidgets import QHBoxLayout
@@ -34,11 +32,16 @@ class TimerView(QMainWindow):
 
         self.startButton = QPushButton("Start")
         self.startButton.setFixedHeight(50)
+  
         self.stopButton = QPushButton("Stop")
         self.stopButton.setFixedHeight(50)
 
+        self.pauseButton = QPushButton("Pause")
+        self.pauseButton.setFixedHeight(50)
+
         self._button_layout = QHBoxLayout()
         self._button_layout.addWidget(self.startButton)
+        self._button_layout.addWidget(self.pauseButton)
         self._button_layout.addWidget(self.stopButton)
 
         self.box_layout.addWidget(self.display)
@@ -46,10 +49,5 @@ class TimerView(QMainWindow):
 
         self._centralWidget.setLayout(self.box_layout)
 
-if __name__ == "__main__":
-    timer_application = QApplication(sys.argv)
-
-    view = TimerView()
-    view.show()
-
-    exit(timer_application.exec())
+    def update_display(self, time : str):
+        self.display.setText(str(time))

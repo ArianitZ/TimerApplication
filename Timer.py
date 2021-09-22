@@ -15,4 +15,3 @@ class Timer():
     def decrease_time(self, delta):
         self.current_time -= delta
         self.current_time = self.current_time
-   
